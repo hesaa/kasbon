@@ -161,7 +161,7 @@ export function DebtFormModal({
           <button
             type="button"
             onClick={() => setShowDueDate(true)}
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 hover:underline cursor-pointer"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:underline cursor-pointer"
           >
             {COPY.formDueDateToggle}
           </button>
@@ -184,7 +184,7 @@ export function DebtFormModal({
           maxLength={200}
         />
 
-        <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100">
+        <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-100 dark:border-slate-800">
           <Button
             type="button"
             variant="ghost"

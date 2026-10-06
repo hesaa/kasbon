@@ -1,6 +1,5 @@
 import { Modal } from "./Modal";
 import { Button } from "./Button";
-import { AlertTriangle } from "lucide-react";
 
 interface ConfirmDialogProps {
   isOpen: boolean;
@@ -26,10 +25,7 @@ export function ConfirmDialog({
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title}>
       <div className="space-y-4 text-center sm:text-left">
-        <div className="mx-auto sm:mx-0 h-10 w-10 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center">
-          <AlertTriangle className="h-5 w-5" />
-        </div>
-        <p className="text-sm text-slate-600">{description}</p>
+        <p className="text-sm text-slate-600 dark:text-slate-300">{description}</p>
         <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-2 pt-2">
           <Button
             type="button"

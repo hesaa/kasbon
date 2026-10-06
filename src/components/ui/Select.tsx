@@ -15,7 +15,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label
             htmlFor={selectId}
-            className="block text-sm font-medium text-slate-700 mb-1.5"
+            className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5"
           >
             {label}
           </label>
@@ -23,16 +23,16 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         <select
           ref={ref}
           id={selectId}
-          className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-white text-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[44px] cursor-pointer ${
+          className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[44px] cursor-pointer ${
             error
-              ? "border-rose-400 focus:border-rose-500 focus:ring-rose-500"
-              : "border-slate-300 hover:border-slate-400"
+              ? "border-rose-400 dark:border-rose-500/70 focus:border-rose-500 focus:ring-rose-500"
+              : "border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600"
           } ${className}`}
           {...props}
         >
           {children}
         </select>
-        {error && <p className="mt-1 text-xs text-rose-600 font-medium">{error}</p>}
+        {error && <p className="mt-1 text-xs text-rose-600 dark:text-rose-400 font-medium">{error}</p>}
       </div>
     );
   }

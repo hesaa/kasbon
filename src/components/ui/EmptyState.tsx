@@ -17,14 +17,14 @@ export function EmptyState({
 }: EmptyStateProps) {
   if (type === "error") {
     return (
-      <div className="flex flex-col items-center justify-center text-center p-8 bg-white rounded-2xl border border-rose-200 shadow-xs my-4">
-        <div className="h-12 w-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mb-3">
+      <div className="flex flex-col items-center justify-center text-center p-8 bg-white dark:bg-slate-900 rounded-2xl border border-rose-200 dark:border-rose-900/60 shadow-xs my-4">
+        <div className="h-12 w-12 rounded-2xl bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-3">
           <AlertCircle className="h-6 w-6" />
         </div>
-        <h3 className="text-base font-bold text-slate-900 mb-1">
+        <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mb-1">
           {COPY.fetchErrorTitle}
         </h3>
-        <p className="text-sm text-slate-500 max-w-sm mb-4">
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm mb-4">
           {errorMessage || COPY.toastError}
         </p>
         {onAction && (
@@ -38,14 +38,14 @@ export function EmptyState({
 
   if (type === "filtered") {
     return (
-      <div className="flex flex-col items-center justify-center text-center p-8 bg-white rounded-2xl border border-slate-200 shadow-xs my-4">
-        <div className="h-12 w-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center mb-3">
+      <div className="flex flex-col items-center justify-center text-center p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs my-4">
+        <div className="h-12 w-12 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex items-center justify-center mb-3">
           <FilterX className="h-6 w-6" />
         </div>
-        <h3 className="text-base font-bold text-slate-900 mb-1">
+        <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mb-1">
           {COPY.emptyFilterTitle}
         </h3>
-        <p className="text-sm text-slate-500 max-w-sm mb-4">
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm mb-4">
           Coba ganti kata kunci pencarian atau ubah filter status & tipe.
         </p>
         {onAction && (
@@ -58,12 +58,12 @@ export function EmptyState({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center text-center p-10 bg-white rounded-2xl border border-slate-200 shadow-xs my-4">
-      <div className="h-14 w-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
+    <div className="flex flex-col items-center justify-center text-center p-10 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs my-4">
+      <div className="h-14 w-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
         <Inbox className="h-7 w-7" />
       </div>
-      <h3 className="text-lg font-bold text-slate-900 mb-1">{COPY.emptyTitle}</h3>
-      <p className="text-sm text-slate-500 max-w-sm mb-6">{COPY.emptySubtitle}</p>
+      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-1">{COPY.emptyTitle}</h3>
+      <p className="text-sm text-slate-500 dark:text-slate-400 max-w-sm mb-6">{COPY.emptySubtitle}</p>
       {onAction && (
         <Button variant="primary" size="md" onClick={onAction}>
           {actionLabel || COPY.emptyCTA}

@@ -19,7 +19,7 @@ export default async function DashboardPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-[100dvh] bg-slate-50 p-6 space-y-6 max-w-3xl mx-auto">
+        <div className="min-h-[100dvh] bg-slate-50 dark:bg-slate-950 p-6 space-y-6 max-w-3xl mx-auto">
           <SummaryCardsSkeleton />
           <DebtListSkeleton />
         </div>

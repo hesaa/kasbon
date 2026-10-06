@@ -75,21 +75,22 @@ export function DashboardClient({ userEmail }: DashboardClientProps) {
   };
 
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-slate-50">
+    <div className="min-h-[100dvh] flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors">
       <Header userEmail={userEmail} />
 
       <main className="mx-auto max-w-3xl w-full px-4 pb-28 pt-6 space-y-6 grow">
         <SummaryCards summary={data?.summary} isLoading={isLoading} />
 
-        <div className="flex items-center justify-between gap-2 border-b border-slate-200 pb-2">
-          <div className="flex items-center gap-1 bg-slate-200/60 p-1 rounded-xl text-xs font-semibold">
+        <div className="flex items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
+          <div className="flex items-center gap-1 bg-slate-200/60 dark:bg-slate-800/80 p-1 rounded-xl text-xs font-semibold">
             <button
               type="button"
               onClick={() => setViewMode("list")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${viewMode === "list"
-                  ? "bg-white text-slate-900 shadow-xs"
-                  : "text-slate-600 hover:text-slate-900"
-                }`}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                viewMode === "list"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
             >
               <List className="h-3.5 w-3.5" />
               <span>Daftar</span>
@@ -97,10 +98,11 @@ export function DashboardClient({ userEmail }: DashboardClientProps) {
             <button
               type="button"
               onClick={() => setViewMode("group")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${viewMode === "group"
-                  ? "bg-white text-slate-900 shadow-xs"
-                  : "text-slate-600 hover:text-slate-900"
-                }`}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                viewMode === "group"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
             >
               <Users className="h-3.5 w-3.5" />
               <span>Per Orang</span>
@@ -108,10 +110,11 @@ export function DashboardClient({ userEmail }: DashboardClientProps) {
             <button
               type="button"
               onClick={() => setViewMode("chart")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${viewMode === "chart"
-                  ? "bg-white text-slate-900 shadow-xs"
-                  : "text-slate-600 hover:text-slate-900"
-                }`}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                viewMode === "chart"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
             >
               <BarChart3 className="h-3.5 w-3.5" />
               <span>Grafik</span>
@@ -157,8 +160,9 @@ export function DashboardClient({ userEmail }: DashboardClientProps) {
         type="button"
         onClick={handleOpenCreate}
         aria-label={COPY.actionNewDebt}
-        className="sm:hidden fixed bottom-6 right-6 h-14 w-14 rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 flex items-center justify-center transition-transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 z-20 cursor-pointer"
+        className="sm:hidden fixed bottom-6 right-6 h-14 w-14 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 flex items-center justify-center transition-transform active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 z-20 cursor-pointer"
       >
+        <Plus className="h-6 w-6" />
       </button>
 
       <DebtFormModal

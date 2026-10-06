@@ -16,8 +16,8 @@ export function Badge({ type, status, children, className = "" }: BadgeProps) {
       <span
         className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${
           isOwed
-            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-            : "bg-rose-50 text-rose-700 border border-rose-200"
+            ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60"
+            : "bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60"
         } ${className}`}
       >
         {isOwed ? (
@@ -33,9 +33,9 @@ export function Badge({ type, status, children, className = "" }: BadgeProps) {
   if (status === "settled") {
     return (
       <span
-        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200 ${className}`}
+        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 ${className}`}
       >
-        <CheckCircle2 className="h-3 w-3 text-slate-500 shrink-0" />
+        <CheckCircle2 className="h-3 w-3 text-slate-500 dark:text-slate-400 shrink-0" />
         <span>{COPY.statusSettled}</span>
       </span>
     );
@@ -44,9 +44,9 @@ export function Badge({ type, status, children, className = "" }: BadgeProps) {
   if (status === "unsettled") {
     return (
       <span
-        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200 ${className}`}
+        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 ${className}`}
       >
-        <Clock className="h-3 w-3 text-amber-500 shrink-0" />
+        <Clock className="h-3 w-3 text-amber-500 dark:text-amber-400 shrink-0" />
         <span>{COPY.statusUnsettled}</span>
       </span>
     );
@@ -55,9 +55,9 @@ export function Badge({ type, status, children, className = "" }: BadgeProps) {
   if (status === "overdue") {
     return (
       <span
-        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-rose-100 text-rose-800 border border-rose-300 ${className}`}
+        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-rose-100 dark:bg-rose-950/60 text-rose-800 dark:text-rose-300 border border-rose-300 dark:border-rose-800 ${className}`}
       >
-        <AlertTriangle className="h-3 w-3 text-rose-600 shrink-0" />
+        <AlertTriangle className="h-3 w-3 text-rose-600 dark:text-rose-400 shrink-0" />
         <span>{COPY.statusOverdue}</span>
       </span>
     );
@@ -65,7 +65,7 @@ export function Badge({ type, status, children, className = "" }: BadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200 ${className}`}
+      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 ${className}`}
     >
       {children}
     </span>

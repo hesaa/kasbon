@@ -62,7 +62,7 @@ export function DebtList({
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-xs divide-y divide-slate-100/80 overflow-hidden">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs divide-y divide-slate-100/80 dark:divide-slate-800/80 overflow-hidden">
       {debts.map((debt) => (
         <DebtItem
           key={debt.id}
