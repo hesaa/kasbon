@@ -2,8 +2,9 @@
 
 > Web app sederhana, cepat, dan transparan buat nyatet siapa hutang ke kamu dan kamu hutang ke siapa.
 
-**Demo:** TODO(owner): https://<your-app>.vercel.app
-**Loom:** TODO(owner)
+**Demo:** [URL](https://kasbon.hesaa.xyz/)
+
+**CAP.SO:** [Video](https://cap.so/s/raabak3f61tpprg)
 
 ---
 
