@@ -4,23 +4,25 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { COPY } from "@/lib/copy";
+import { formError, formSuccess, type FormState } from "@/lib/form/state";
 
 const authSchema = z.object({
   email: z.string().trim().email("Format email nggak valid"),
   password: z.string().min(8, "Password minimal 8 karakter ya"),
 });
 
-export interface AuthState {
-  error?: string;
-  message?: string;
-}
+export type AuthFields = {
+  email?: string;
+};
+
+export type AuthState = FormState<AuthFields>;
 
 export async function loginAction(
   _prevState: AuthState,
   formData: FormData
 ): Promise<AuthState> {
-  const rawEmail = formData.get("email");
-  const rawPassword = formData.get("password");
+  const rawEmail = String(formData.get("email") || "");
+  const rawPassword = String(formData.get("password") || "");
 
   const validated = authSchema.safeParse({
     email: rawEmail,
@@ -29,7 +31,9 @@ export async function loginAction(
 
   if (!validated.success) {
     const firstError = validated.error.issues[0]?.message;
-    return { error: firstError || "Email atau password belum valid." };
+    return formError(firstError || "Email atau password belum valid.", {
+      email: rawEmail,
+    });
   }
 
   const supabase = await createClient();
@@ -41,7 +45,7 @@ export async function loginAction(
   if (error) {
     const code = error.code as keyof typeof COPY.authErrors;
     const message = COPY.authErrors[code] || COPY.authErrors.fallback;
-    return { error: message };
+    return formError(message, { email: validated.data.email });
   }
 
   redirect("/");
@@ -51,8 +55,8 @@ export async function signupAction(
   _prevState: AuthState,
   formData: FormData
 ): Promise<AuthState> {
-  const rawEmail = formData.get("email");
-  const rawPassword = formData.get("password");
+  const rawEmail = String(formData.get("email") || "");
+  const rawPassword = String(formData.get("password") || "");
 
   const validated = authSchema.safeParse({
     email: rawEmail,
@@ -61,7 +65,9 @@ export async function signupAction(
 
   if (!validated.success) {
     const firstError = validated.error.issues[0]?.message;
-    return { error: firstError || "Email atau password belum valid." };
+    return formError(firstError || "Email atau password belum valid.", {
+      email: rawEmail,
+    });
   }
 
   const supabase = await createClient();
@@ -72,12 +78,15 @@ export async function signupAction(
 
   if (error) {
     const code = error.code as keyof typeof COPY.authErrors;
-    const message = COPY.authErrors[code] || `${COPY.authErrors.fallback}: ${error.message}`;
-    return { error: message };
+    const message =
+      COPY.authErrors[code] || `${COPY.authErrors.fallback}: ${error.message}`;
+    return formError(message, { email: validated.data.email });
   }
 
   if (data.user && !data.session) {
-    return { message: COPY.signupConfirmNotice };
+    return formSuccess(COPY.signupConfirmNotice, {
+      email: validated.data.email,
+    });
   }
 
   redirect("/");

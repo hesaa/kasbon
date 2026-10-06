@@ -4,7 +4,9 @@ import { useActionState, useState } from "react";
 import Link from "next/link";
 import { Wallet, Eye, EyeOff, Loader2 } from "lucide-react";
 import { signupAction, type AuthState } from "../actions";
+import { old } from "@/lib/form/state";
 import { COPY } from "@/lib/copy";
+
 
 export default function SignupPage() {
   const [state, formAction, isPending] = useActionState<AuthState, FormData>(
@@ -49,6 +51,7 @@ export default function SignupPage() {
               type="email"
               required
               autoComplete="email"
+              defaultValue={old(state, "email")}
               placeholder="nama@email.com"
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-900 text-sm"
             />
